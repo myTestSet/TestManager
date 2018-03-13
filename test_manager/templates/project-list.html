@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    {% for project in project_lists %}
+    <tr><td>{{ project.project_id }}: {{ project.project_name }}</td></tr>
+    {%endfor%}
+</table>
+</body>
+</html>
