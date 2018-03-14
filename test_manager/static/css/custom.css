@@ -1,0 +1,12 @@
+.dataTables_filter {
+    font-size: 14px;
+}
+
+div.dataTables_filter input {
+    width: 73%;
+}
+
+.about_content {
+    line-height: 2.0em;
+    font-size: 15px;
+}

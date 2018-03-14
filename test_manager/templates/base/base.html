@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,31 @@
     {% include "base/css.html" %}
     {% include "base/js.html" %}
 </head>
-<body>
+<body class="layui-bg-gray">
+<div class="wrapper">
+    {% include 'base/top.html' %}
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            {% include 'base/menu.html' %}
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <section class="content-header">
+          {% block contentHeader %}
+          {% endblock %}
+        </section>
+        <div class="content">
+          {% for message in messages %}
+          <ul class="alert alert-{{message.tags}} dmsg">
+            <p> {{ message }} </p>
+          </ul>
+          {% endfor %}
 
+          {% block content %}
+          {% endblock %}
+        </div>
+    </div>
+    {% include 'base/footer.html' %}
+</div>
 </body>
 </html>

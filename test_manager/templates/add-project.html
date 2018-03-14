@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>添加项目</title>
-</head>
-<body>
-<h1>添加项目</h1>
-<form method="post" action=>
-    <input name="project_name" placeholder="项目名称"/>
-    <input name="user_name" placeholder="对应用户"/>
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link href="{% static '' %}">
+    <form method="post" action="">
+    <input placeholder="请输入项目名称" name="project_name">
+    <input placeholder="请输入测试人员" name="user_name">
     <button type="submit">提交</button>
     {% csrf_token %}
-</form>
-</body>
-</html>
+    </form>
+{% endblock %}

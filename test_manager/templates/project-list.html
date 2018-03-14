@@ -1,14 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<table>
-    {% for project in project_lists %}
-    <tr><td>{{ project.project_id }}: {{ project.project_name }}</td></tr>
-    {%endfor%}
-</table>
-</body>
-</html>
+{% extends 'base/base.html' %}
+
+{% block content %}
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			列表
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>项目管理</a></li>
+			<li class="active">项目列表</li>
+		</ol>
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="box table-responsive no-padding">
+			<table class="table table-bordered table-hover">
+				<tbody>
+					<tr>
+						<th>项目id</th>
+						<th>项目名称</th>
+						<th>创建时间</th>
+						<th>最近更新</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+					{% for product in products %}
+					<tr>
+						<td>{{ product.product_id }}</td>
+						<td>{{ product.manufacturer_name }}</td>
+						<td>{{ product.brand_name }}</td>
+						<td>{{ product.name }}</td>
+            <td><img src="{{ product.picture }}" height=60 alt="{{product.name}}"/></td>
+						<td>{{ product.bar_code }}</td>
+						<td>{{ product.created_time|date:'Y-m-d H:i:s' }}</td>
+						<td>{{ product.last_update|date:'Y-m-d H:i:s' }}</td>
+						<td>
+                {% if product.status == 2 %}
+                  <a data-toggle="tooltip" data-placement="bottom" title="{{product.reject_note}}">
+                    {{ product.get_status_display }}
+                  </a>
+                {% else%}
+                  {{ product.get_status_display }}
+                {% endif %}
+            </td>
+						<td>
+							{% if product.status == 1 %}  <!-- 待审核 -->
+                <!--通过form-->
+								<form method="POST" action="{% url 'manager_product_do_audit' %}">
+									<input type='hidden' value='{{ product.product_id }}' name='id'>
+									<input type='hidden' value='pass' name='action'>
+									<button type="submit" class="btn btn-block btn-primary btn-sm">通过</button>
+								</form>
+                <!--拒绝form-->
+                <button type="button" class="btn btn-block btn-primary btn-sm"
+                                      data-toggle="modal" data-target="#reject-modal-{{product.product_id}}">拒绝</button>
+                <div class="modal" id="reject-modal-{{product.product_id}}">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">填写修改意见</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form class="form-horizontal" method="POST" action="{% url 'manager_product_do_audit' %}">
+                          <div class="box-body">
+                            <div class="form-group">
+                              <div class="col-sm-1"></div>
+                              <div class="col-sm-10">
+                                <textarea type="text" rows=4 class="form-control" name="reject_note"></textarea>
+                              </div>
+                              <div class="col-sm-1"></div>
+                            </div>
+                          </div> <!-- /.box-body -->
+                          <div class="box-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="submit" class="btn btn-primary pull-right">拒绝</button>
+                          </div> <!-- /.box-footer -->
+                          <input type='hidden' value='{{ product.product_id }}' name='id'>
+                          <input type='hidden' value='reject' name='action'>
+                        </form>
+                      </div>  <!--/modal-body-->
+                    </div> <!-- /.modal-content -->
+                  </div> <!-- /.modal-dialog -->
+                </div> <!-- /.modal -->
+
+							{% endif %}
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% if products %}
+
+			{% endif %}
+			<span style="float: right; margin-right: 30px">总数：{{ total }}</span>
+		</div>  <!--end of div.box-->
+	</section>
+
+{% endblock content%}

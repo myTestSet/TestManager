@@ -1,9 +1,26 @@
+{% load static %}
 <div class="user-panel">
   <div class="pull-left image">
-    <img src="/static/dist/img/avatar5.png" class="img-circle" alt="User Image" />
+    <img src="{%static '/img/avatar5.png' %}" class="img-circle" alt="User Image" />
   </div>
   <div class="pull-left info">
     <p>{{user_name}}</p>
-    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
   </div>
 </div>
+
+<ul class="sidebar-menu">
+    <li class="header">
+    </li>
+    <li class="treeview project">
+        <a href="{% url 'home' %}">首页</a>
+    </li>
+    <li class="treeview project">
+        <a href="{% url 'add_project' %}">创建项目</a>
+    </li>
+    <li class="treeview project">
+        <a href="{% url 'project_list' %}">项目列表</a>
+    </li>
+    <li class="treeview project">
+        <a href="{% url 'project_list' %}">用例列表</a>
+    </li>
+</ul>
