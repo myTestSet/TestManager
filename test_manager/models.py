@@ -29,4 +29,4 @@ class Project(BaseModel):
 class Case(BaseModel):
     case_id = models.AutoField(primary_key=True)
     case_name = models.CharField(max_length=100)
-
+    
