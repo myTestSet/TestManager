@@ -52,6 +52,12 @@ def del_project(request):
 
 def add_case(request):
     if request.method == 'GET':
-        return render(request, 'add-case.html')
+        projects = Project.objects.all()
+        project_lists = [project for project in projects]
+        contexts = {'project_lists': project_lists}
+        return render(request, 'add-case.html', contexts)
     elif request.method == 'POST':
+
+        case_name = request.POST['case_name']
+
 
