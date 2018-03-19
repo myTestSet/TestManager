@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from .models import Project
+from .models import Project, Suite
 from django.http import HttpResponseRedirect, HttpResponse
 
 # Create your views here.
@@ -50,6 +50,25 @@ def del_project(request):
     return redirect('project-list.html')
 
 
+def add_suite(request):
+    if request.method == 'GET':
+        projects = Project.objects.all()
+        project_lists = [project for project in projects]
+        contexts = {'project_lists': project_lists}
+        return render(request, 'add-suite.html', contexts)
+    elif request.method == 'POST':
+        name = request.POST['suite_name']
+
+
+def suite_list(request):
+    suites = Suite.objects.all()
+    suite_lists = [suite for suite in suites]
+    contexts = {
+        'suite_lists':suite_lists
+    }
+    return render(request, 'suite-list.html', contexts)
+
+
 def add_case(request):
     if request.method == 'GET':
         projects = Project.objects.all()
@@ -57,7 +76,6 @@ def add_case(request):
         contexts = {'project_lists': project_lists}
         return render(request, 'add-case.html', contexts)
     elif request.method == 'POST':
-
-        case_name = request.POST['case_name']
+        name = request.POST['case_name']
 
 
