@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^edit-project.html$', views.edit_project, name='edit_project'),
     url(r'^delete-project.html$', views.del_project, name='del_project'),
     url(r'^add-case.html$', views.add_case, name='add_case'),
+    url(r'^add-suite.html', views.add_suite, name='add_suite'),
+    url(r'^suite-list.html', views.suite_list, name='suite_list'),
 ]
