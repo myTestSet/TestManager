@@ -14,14 +14,35 @@
 
     <div style="padding: 100px 100px 10px; ">
     <form method="post" action="" role="form">
+        <div>
+            <select name="project_id" onchange="projectChange()" class="selectpicker"  data-style="btn-primary">
+            <option value="0">请选择</option>
+                {% for project in project_lists  %}
+                    <option value="{{ project.project_id }}">
+                        {{ project.project_name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    <br>
         <div class="input-group">
             <span class="input-group-addon" style="background-color: #C1FFE4;">测试集名称</span>
-                <input placeholder="请输入测试集名称" name="project_name" class="form-control" required >
+                <input placeholder="请输入测试集名称" name="suite_name" class="form-control" required>
         </div>
         <br>
         <div class="input-group">
-            <span class="input-group-addon" style="background-color: #C1FFE4">测试人员</span>
-                <input placeholder="请输入测试人员" name="user_name" class="form-control" required>
+            <span class="input-group-addon" style="background-color: #C1FFE4">变量</span>
+                <input placeholder="请输入基础变量，该值为公共变量，该测试集相关所有case可用" name="variables" class="form-control">
+        </div>
+    <br>
+        <div class="input-group">
+            <span class="input-group-addon" style="background-color: #C1FFE4">参数</span>
+                <input placeholder="请输入基础参数，该值为公共参数，该测试集相关所有case可用" name="parameters" class="form-control">
+        </div>
+    <br>
+        <div class="input-group">
+            <span class="input-group-addon" style="background-color: #C1FFE4">request</span>
+                <input placeholder="请输入基础请求，如基础URL" name="parameters" class="form-control">
         </div>
         <span class="" style="text-align: center;display:block; padding: 20px"><button type="submit" class="btn btn-primary btn-lg " style="width: 200px">提交</button></span>
         {% csrf_token %}
