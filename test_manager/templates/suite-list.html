@@ -1,10 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
 
-</body>
-</html>
+{% block content %}
+
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+            测试集列表
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>测试集合管理</a></li>
+			<li class="active">测试集列表</li>
+		</ol>
+	</section>
+
+    <div class="heading">
+{#        <button id="build" type="button" class="btn  btn-success" data-toggle="modal">#}
+{#            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="add-project.html">添加项目</a>#}
+{#        </button>#}
+    <a class="btn btn-success" href="add-project.html">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        添加测试集
+    </a>
+    </div>
+
+	<!-- Main content -->
+	<section class="content">
+		<div class="box table-responsive no-padding">
+			<table class="table table-bordered table-hover">
+				<tbody>
+					<tr>
+                        <th>
+                            <input name="checkbox" type="checkbox" id="1">
+                        </th>
+						<th>测试集名称</th>
+						<th>关联项目名称</th>
+						<th>操作</th>
+					</tr>
+					{% for suite in suite_lists %}
+					<tr>
+                        <td>
+                            <input name="checkbox" type="checkbox" id="1">
+                        </td>
+						<td>{{ suite.name}}</td>
+						<td>{{ suite.project_id.project_name}}</td>
+						<td>{{ project.create_time }}</td>
+						<td>{{ project.user_name }}</td>
+                        <td>
+                            <a href="edit-project.html?pid={{ project.project_id }}" class="btn btn-warning">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                修改
+                            </a>
+                            <a href="delete-project.html?pid={{ project.project_id }}" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>删除
+                            </a>
+                        </td>
+						<td>{{ product.created_time|date:'Y-m-d H:i:s' }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% if products %}
+			{% endif %}
+			<span style="float: right; margin-right: 30px">总数：{{ total }}</span>
+		</div>  <!--end of div.box-->
+	</section>
+
+{% endblock content%}

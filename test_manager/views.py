@@ -89,8 +89,9 @@ def suite_list(request):
     '''
     suites = Suite.objects.all()
     suite_lists = [suite for suite in suites]
+
     contexts = {
-        'suite_lists': suite_lists
+        'suite_lists': suite_lists,
     }
     return render(request, 'suite-list.html', contexts)
 

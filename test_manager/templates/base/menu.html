@@ -1,4 +1,5 @@
 {% load static %}
+<h2 style="font-style: italic;color: #00a65a">测试管理系统</h2>
 <div class="user-panel">
   <div class="pull-left image">
     <img src="{%static '/img/avatar5.png' %}" class="img-circle" alt="User Image" />
@@ -11,25 +12,90 @@
 <ul class="sidebar-menu">
     <li class="header">
     </li>
-    <li class="treeview project">
-        <a href="{% url 'home' %}">首页</a>
-    </li>
-    <li class="treeview project">
-        <a href="{% url 'add_project' %}">创建项目</a>
-    </li>
-    <li class="treeview project">
-        <a href="{% url 'project_list' %}">项目列表</a>
-    </li>
-    <li class="treeview project">
-        <a href="{% url 'add_suite' %}">创建测试集合</a>
-    </li>
-    <li class="treeview project">
-        <a href="{% url 'suite_list' %}">测试集合列表</a>
-    </li>
-    <li class="treeview project">
-        <a href="{% url 'add_case' %}">添加用例</a>
-    </li>
-    <li class="treeview project">
-        <a href="{% url 'project_list' %}">用例列表</a>
-    </li>
+    <div class="panel-group table-responsive" role="tablist">
+        <div class="panel panel-info sidebar-menu">
+            <div class="panel-heading" id="collapseListGroupHeadingProject" data-toggle="collapse" data-target="#collapseListGroupProject" role="tab">
+                <h4 class="panel-title">
+                    <a href="{% url 'home' %}">首页</a>
+                </h4>
+            </div>
+        </div>
+
+        <div class="panel panel-info sidebar-menu">
+            <div class="panel-heading" id="collapseListGroupHeadingProject" data-toggle="collapse" data-target="#collapseListGroupProject" role="tab">
+                <h4 class="panel-title">
+                    项目管理
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-chevron-down right"></span>
+                </h4>
+            </div>
+            <div id="collapseListGroupProject" class="panel-collapse collapse"
+                 role="tabpanel" aria-labelledby="collapseListGroupProject">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'add_project' %}">添加项目</a>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa fa-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'project_list' %}">项目列表</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-info sidebar-menu">
+            <div class="panel-heading" id="collapseListGroupHeadingSuite" data-toggle="collapse" data-target="#collapseListGroupSuite" role="tab">
+                <h4 class="panel-title">
+                    测试集管理
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-chevron-down right"></span>
+                </h4>
+            </div>
+            <div id="collapseListGroupSuite" class="panel-collapse collapse"
+                 role="tabpanel" aria-labelledby="collapseListGroupProject">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'add_suite' %}">添加测试集</a>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa fa-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'suite_list' %}">测试集列表</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info sidebar-menu">
+            <div class="panel-heading" id="collapseListGroupHeadingCase" data-toggle="collapse" data-target="#collapseListGroupCase" role="tab">
+                <h4 class="panel-title">
+                    测试用例管理
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-chevron-down right"></span>
+                </h4>
+            </div>
+            <div id="collapseListGroupCase" class="panel-collapse collapse"
+                 role="tabpanel" aria-labelledby="collapseListGroupProject">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'add_suite' %}">添加测试case</a>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa fa-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'suite_list' %}">测试case列表</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <!-- jQuery1.11.3 (necessary for Bo otstrap's JavaScript plugins) -->
+        <script src="js/jquery-1.11.3.min.js "></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js "></script>
+        <script>
+        $(function(){
+            $(".panel-heading").click(function(e){
+                /*切换折叠指示图标*/
+                $(this).find("span").toggleClass("glyphicon-chevron-down");
+                $(this).find("span").toggleClass("glyphicon-chevron-up");
+            });
+        });
+        </script>
 </ul>
