@@ -22,7 +22,10 @@ def add_project(request):
     elif request.method == 'POST':
         project_name = request.POST['project_name']
         user_name = request.POST['user_name']
-        Project.objects.create(project_name=project_name, user_name=user_name)
+        Project.objects.create(
+            project_name=project_name,
+            user_name=user_name
+        )
         return redirect('project-list.html')
 
 
@@ -40,7 +43,10 @@ def edit_project(request):
         pid = request.GET.get('pid')  # 获取前端传来的项目 id 值
         project_name = request.POST['project_name']
         user_name = request.POST['user_name']
-        Project.objects.filter(id=pid).update(project_name=project_name, user_name=user_name)
+        Project.objects.filter(id=pid).update(
+            project_name=project_name,
+            user_name=user_name
+        )
         return redirect('project-list.html')
 
 
@@ -51,16 +57,36 @@ def del_project(request):
 
 
 def add_suite(request):
+    '''
+    添加模块
+    :param request:
+    :return:
+    '''
     if request.method == 'GET':
         projects = Project.objects.all()
         project_lists = [project for project in projects]
         contexts = {'project_lists': project_lists}
         return render(request, 'add-suite.html', contexts)
     elif request.method == 'POST':
+        project_id = Project.objects.get(pk=request.POST['project_id'])  # 外键
         name = request.POST['suite_name']
+        variables = request.POST['variables']
+        parameters = request.POST['parameters']
+        request = request.POST['request']
+        Suite.objects.create(
+            project_id=project_id,
+            name=name,
+            variables=variables,
+            parameters=parameters,
+            request=request
+        )
+        return redirect('suite-list.html')
 
 
 def suite_list(request):
+    '''
+    测试集列表
+    '''
     suites = Suite.objects.all()
     suite_lists = [suite for suite in suites]
     contexts = {
