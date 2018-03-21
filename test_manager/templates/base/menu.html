@@ -1,14 +1,5 @@
 {% load static %}
-<h2 style="font-style: italic;color: #00a65a">测试管理系统</h2>
-<div class="user-panel">
-  <div class="pull-left image">
-    <img src="{%static '/img/avatar5.png' %}" class="img-circle" alt="User Image" />
-  </div>
-  <div class="pull-left info">
-    <p>{{user_name}}</p>
-  </div>
-</div>
-
+{% include 'base/menu-userinfo.html' %}
 <ul class="sidebar-menu">
     <li class="header">
     </li>
@@ -16,7 +7,8 @@
         <div class="panel panel-info sidebar-menu">
             <div class="panel-heading" id="collapseListGroupHeadingProject" data-toggle="collapse" data-target="#collapseListGroupProject" role="tab">
                 <h4 class="panel-title">
-                    <a href="{% url 'home' %}">首页</a>
+
+                    <a href="{% url 'home' %}"><span class="fa fa-home"></span>首页</a>
                 </h4>
             </div>
         </div>
@@ -24,6 +16,7 @@
         <div class="panel panel-info sidebar-menu">
             <div class="panel-heading" id="collapseListGroupHeadingProject" data-toggle="collapse" data-target="#collapseListGroupProject" role="tab">
                 <h4 class="panel-title">
+                    <span class="fa fa-magic"></span>
                     项目管理
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="glyphicon glyphicon-chevron-down right"></span>
@@ -45,6 +38,7 @@
         <div class="panel panel-info sidebar-menu">
             <div class="panel-heading" id="collapseListGroupHeadingSuite" data-toggle="collapse" data-target="#collapseListGroupSuite" role="tab">
                 <h4 class="panel-title">
+                    <span class="fa fa-adjust"></span>
                     测试集管理
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="glyphicon glyphicon-chevron-down right"></span>
@@ -67,6 +61,7 @@
         <div class="panel panel-info sidebar-menu">
             <div class="panel-heading" id="collapseListGroupHeadingCase" data-toggle="collapse" data-target="#collapseListGroupCase" role="tab">
                 <h4 class="panel-title">
+                    <span class="fa fa-adn"></span>
                     测试用例管理
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="glyphicon glyphicon-chevron-down right"></span>
@@ -85,10 +80,6 @@
             </div>
         </div>
     </div>
-        <!-- jQuery1.11.3 (necessary for Bo otstrap's JavaScript plugins) -->
-        <script src="js/jquery-1.11.3.min.js "></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js "></script>
         <script>
         $(function(){
             $(".panel-heading").click(function(e){
