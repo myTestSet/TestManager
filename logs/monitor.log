@@ -1,0 +1,11 @@
+[2018-03-22 19:56:43,582] [INFO] "GET /manager/edit-suite.html?sid=4 HTTP/1.1" 200 11163
+[2018-03-22 19:56:59,261] [INFO] This is an error msg
+[2018-03-22 19:56:59,267] [INFO] "POST /manager/edit-suite.html?sid=4 HTTP/1.1" 302 0
+[2018-03-22 19:56:59,307] [INFO] "GET /manager/suite-list.html HTTP/1.1" 200 10995
+[2018-03-22 19:59:21,194] [INFO] "GET /manager/suite-list.html HTTP/1.1" 200 10995
+[2018-03-22 19:59:54,971] [INFO] "GET /manager/suite-list.html HTTP/1.1" 200 10995
+[2018-03-22 20:00:24,726] [INFO] "GET /manager/add-project.html HTTP/1.1" 200 10027
+[2018-03-22 20:01:15,499] [INFO] "GET /manager/add-project.html HTTP/1.1" 200 10032
+[2018-03-22 20:01:46,265] [INFO] "GET /manager/add-project.html HTTP/1.1" 200 10032
+[2018-03-22 20:01:49,061] [INFO] "GET /manager/add-suite.html HTTP/1.1" 200 11162
+[2018-03-22 20:02:12,522] [INFO] "GET /manager/add-suite.html HTTP/1.1" 200 11162
