@@ -34,6 +34,9 @@
                         </th>
 						<th>测试集名称</th>
 						<th>关联项目名称</th>
+                        <th>测试集全局变量</th>
+                        <th>测试集全局参数</th>
+                        <th>测试集基础URL</th>
 						<th>操作</th>
 					</tr>
 					{% for suite in suite_lists %}
@@ -43,18 +46,18 @@
                         </td>
 						<td>{{ suite.name}}</td>
 						<td>{{ suite.project_id.project_name}}</td>
-						<td>{{ project.create_time }}</td>
-						<td>{{ project.user_name }}</td>
+                        <td>{{ suite.variables }}</td>
+                        <td>{{ suite.parameters }}</td>
+                        <td>{{ suite.request }}</td>
                         <td>
-                            <a href="edit-project.html?pid={{ project.project_id }}" class="btn btn-warning">
+                            <a href="edit-suite.html?sid={{ suite.suite_id }}" class="btn btn-warning">
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 修改
                             </a>
-                            <a href="delete-project.html?pid={{ project.project_id }}" class="btn btn-danger">
+                            <a href="delete-suite.html?sid={{ suite.suite_id }}" class="btn btn-danger">
                                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>删除
                             </a>
                         </td>
-						<td>{{ product.created_time|date:'Y-m-d H:i:s' }}</td>
 					</tr>
 					{% endfor %}
 				</tbody>
