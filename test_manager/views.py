@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from .models import Project, Suite
 from django.http import HttpResponseRedirect, HttpResponse
 
+import logging
+
 # Create your views here.
 '''
 修改数据库的不加/
@@ -94,6 +96,36 @@ def suite_list(request):
         'suite_lists': suite_lists,
     }
     return render(request, 'suite-list.html', contexts)
+
+
+def edit_suite(request):
+    if request.method == 'GET':
+        projects = Project.objects.all()
+        project_lists = [project for project in projects]
+        contexts = {'project_lists': project_lists}
+        return render(request, 'edit-suite.html', contexts)
+    elif request.method == 'POST':
+        sid = request.GET.get('sid')
+        project_id = Project.objects.get(pk=request.POST['project_id'])
+        name = request.POST['suite_name']
+        variables = request.POST['variables']
+        parameters = request.POST['parameters']
+        request = request.POST['request']
+        logging.info(request, parameters)
+        Suite.objects.filter(suite_id=sid).update(
+            project_id=project_id,
+            name=name,
+            variables=variables,
+            parameters=parameters,
+            request=request
+        )
+        return redirect('suite-list.html')
+
+
+def del_suite(request):
+    sid = request.GET.get('sid')
+    Suite.objects.filter(suite_id=sid).delete()
+    return redirect('suite-list.html')
 
 
 def add_case(request):
