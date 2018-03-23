@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from .models import Project, Suite
 from django.http import HttpResponseRedirect, HttpResponse
 
-import logging
+
 
 # Create your views here.
 '''
@@ -111,7 +111,6 @@ def edit_suite(request):
         variables = request.POST['variables']
         parameters = request.POST['parameters']
         request = request.POST['request']
-        logging.info(request, parameters)
         Suite.objects.filter(suite_id=sid).update(
             project_id=project_id,
             name=name,
