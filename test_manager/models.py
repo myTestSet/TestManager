@@ -36,7 +36,7 @@ class Suite(BaseModel):
     name = models.CharField(max_length=100)  # 测试用例集名称
 
     variables = models.CharField(max_length=1024, blank=True, null=True)
-    parameters = models.CharField(max_length=1024, blank=True, null=True)
+    # parameters = models.CharField(max_length=1024, blank=True, null=True)
     # 公共参数，常用参数为基础 url，
     request = models.TextField(max_length=1024, blank=True, null=True)
     project_id = models.ForeignKey(Project, blank=True, null=True)

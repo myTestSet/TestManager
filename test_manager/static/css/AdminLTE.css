@@ -1843,9 +1843,9 @@ a:focus {
   background-color: #e08e0b;
 }
 .btn-outline {
-  border: 1px solid #fff;
+  border: 1px solid red;
   background: transparent;
-  color: #fff;
+  color: red;
 }
 .btn-outline:hover,
 .btn-outline:focus,

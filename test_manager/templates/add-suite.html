@@ -1,51 +1,175 @@
 {% extends 'base/base.html' %}
 {% load staticfiles %}
 {% block content %}
-    <link href="{% static 'css/mycss/1.css' %}">
-    <section class="content-header">
+    <link href="{% static 'css/mycss/1.css' %}" rel="stylesheet">
+     <section class="content-header">
 		<h1>
-            添加测试集
+            添加模块
         </h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>测试集管理</a></li>
-      <li class="active">添加测试集</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i>模块管理</a></li>
+            <li class="active">添加模块</li>
 		</ol>
 	</section>
+    <div style="padding: 50px">
+        <form class="form-horizontal" id="add_module" method="post">
+            <div class="form-group">
+                <label class="control-label col-md-1 text-primary suite-label" for="suite_name">
+                    <span class="text-red">*</span>
+                    模块名称:
+                </label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="suite_name"
+                           aria-describedby="inputSuccess3Status" name="suite_name"
+                           placeholder="请输入模块名称" value="" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1 text-primary suite-label" for="belong_project">
+                    <span class="text-red">*</span>
+                    所属项目:
+                </label>
+                <div class="col-md-5">
+                    <select name="project_id" class="form-control">
+                        {% for project in  project_lists %}
+                            <option value="0">请选择</option>
+                            <option value="{{ project.project_id }}">{{ project.project_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1 text-primary suite-label">
+                    模块参数:
+                </label>
+                <h6>(全局参数，作用域为整个模块，json格式)</h6>
+                <div class="col-md-2" style="margin-left: 150px;">
+                    <label style="font-size: large">key</label>
+                    <input type="text" class="form-control newadd para_input para_key" placeholder="添加key值"/>
+                </div>
+                <div class="col-md-2">
+                    <label style="font-size: large">value</label>
+                    <input type="text" placeholder="请输入value值" class="form-control newadd-con para_input para_value"/>
+                </div>
 
-    <div style="padding: 50px 50px 10px; ">
-    <form method="post" action="" role="form">
-        <div>
-            <select name="project_id" onchange="projectChange()" class="selectpicker"  data-style="btn-primary">
-            <option value="0">请选择</option>
-                {% for project in project_lists  %}
-                    <option value="{{ project.project_id }}">
-                        {{ project.project_name }}
-                    </option>
-                {% endfor %}
-            </select>
+                <div class="col-md-2" style="padding-left: 0">
+                    <label style="font-size: large"></label>
+                    <button type="button" class="btn btn-outline btn-danger newadd-remove" style="margin-top: 30px;">
+                        删除
+                    </button>
+                    <input class="para_div hidden" style='width: 600px; height:50px;' onfocus=this.blur()
+                           name="variables" >
+                </div>
+            </div>
+            <div class="form-group" style="margin-left: 150px;">
+                <button type="button" class="btn btn-block btn-primary newadd-button" style="width: 150px">
+                    ＋继续添加更多参数
+                </button>
+            </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-1 text-primary suite-label" for="suite_name">
+                    <span class="text-red">*</span>
+                    基础URL:
+            </label>
+            <div class="col-md-5">
+                    <input type="text" class="form-control" id="suite_name"
+                           aria-describedby="inputSuccess3Status" name="request"
+                           placeholder="请输入基础URL" value="" required>
+                </div>
         </div>
-    <br>
-        <div class="input-group">
-            <span class="input-group-addon" style="background-color: #C1FFE4;">测试集名称</span>
-                <input placeholder="请输入测试集名称" name="suite_name" class="form-control" required>
-        </div>
-        <br>
-        <div class="input-group">
-            <span class="input-group-addon" style="background-color: #C1FFE4">变量</span>
-                <input placeholder="请输入基础变量，该值为公共变量，该测试集相关所有case可用" name="variables" class="form-control">
-        </div>
-    <br>
-        <div class="input-group">
-            <span class="input-group-addon" style="background-color: #C1FFE4">参数</span>
-                <input placeholder="请输入基础参数，该值为公共参数，该测试集相关所有case可用" name="parameters" class="form-control">
-        </div>
-    <br>
-        <div class="input-group">
-            <span class="input-group-addon" style="background-color: #C1FFE4">request</span>
-                <input placeholder="请输入基础请求，如基础URL" name="request" class="form-control">
-        </div>
-        <span class="" style="text-align: center;display:block; padding: 20px"><button type="submit" class="btn btn-primary btn-lg " style="width: 200px">提交</button></span>
+            <div class=" form-group am-form-group am-cf">
+                <div class="you" style="margin-left: 20%;">
+                    <span class="" style="text-align: center; padding: 20px">
+                        <button type="submit" class="btn btn-primary btn-lg " style="width: 200px">
+                            提交
+                        </button>
+                    </span>
+                </div>
+            </div>
         {% csrf_token %}
-    </form>
+        </form>
     </div>
+
+    <div class="form-group newadd-div hidden create-w">
+        <div class="col-md-2">
+            <label style="font-size: large">key</label>
+            <input type="text" class="form-control newadd" name="more_title" placeholder="添加key值" style="width: 126px"/>
+        </div>
+        <div class="col-md-2" style="margin-left: 20px; ">
+            <label style="font-size: large">value</label>
+            <input type="text" placeholder="请输入value值" class="form-control newadd-con para_input para_value" style="width: 126px"/>
+        </div>
+        <div class="col-md-2" style="padding-left: 0;margin-left: 27px;">
+            <label style="font-size: large"></label>
+            <button type="button" class="btn btn-outline btn-danger newadd-remove" style="margin-top: 30px;">
+                删除
+            </button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    $(function(){
+        $(".para_input").bind('input porpertychange',function(){
+            console.log("e");
+            var keyValue = $(".para_key").val();
+            var valueValue = $(".para_value").val();
+            console.log(keyValue)
+            $(".para_div").val(keyValue+ ":" + valueValue);
+        });
+    });
+
+
+        $(function () {
+            $('#lifting_time').datetimepicker(
+                {
+                    format: 'yyyy-mm-dd hh:ii',
+                    language: 'zh-CN',
+                    weekStart: true,
+                    todayBtn: true,
+                    autoclose: true,
+                    todayHighlight: true,
+                    keyboardNavigation: true
+                });
+        })
+
+
+        function change_more_info(){
+        var newadd=$('.newadd');
+        var newaddcon=$('.newadd-con');
+        for (var i=0; i<newadd.length; i++){
+            if(newadd[i].value || newaddcon[i].value){
+                var mobile_show_li = $(".mobile-hidden-li.hidden").clone();
+                mobile_show_li.removeClass("hidden");
+                mobile_show_li.addClass("mobile-show-li");
+                mobile_show_li.find("span.format-name").text(newadd[i].value + "：");
+                mobile_show_li.find("span.format-con").text(newaddcon[i].value);
+                $(".format-ul").append(mobile_show_li);
+            }
+        }
+    }
+
+    function new_more_info(){
+        var mobile_show_li = $(".mobile-hidden-li.hidden").clone();
+        mobile_show_li.removeClass("hidden");
+        mobile_show_li.addClass("mobile-show-li");
+        mobile_show_li.find("span.format-name").text( "新增：");
+        mobile_show_li.find("span.format-con").text("");
+        $(".format-ul").append(mobile_show_li);
+    }
+    $(".newadd-button").click(function(){
+        var newadd_div = $(".newadd-div.hidden").clone();
+        newadd_div.removeClass("hidden");
+        $(this).before(newadd_div);
+    });
+    $("body").on("click", ".newadd-remove", function() {
+        $(this).parent().parents("div")[0].remove();
+    });
+    $("body").on("change", ".newadd", function() {
+    });
+    $("body").on("change", ".newadd-con", function() {
+    });
+    </script>
+
 {% endblock %}
