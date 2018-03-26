@@ -15,7 +15,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'demo.html')
 
 
 def add_project(request):
@@ -54,7 +54,7 @@ def edit_project(request):
 
 def del_project(request):
     pid = request.GET.get('pid')
-    Project.objects.filter(id=pid).delete()
+    Project.objects.filter(project_id=pid).delete()
     return redirect('project-list.html')
 
 
@@ -73,13 +73,12 @@ def add_suite(request):
         project_id = Project.objects.get(pk=request.POST['project_id'])  # 外键
         name = request.POST['suite_name']
         variables = request.POST['variables']
-        parameters = request.POST['parameters']
+        # parameters = request.POST['parameters']
         request = request.POST['request']
         Suite.objects.create(
             project_id=project_id,
             name=name,
             variables=variables,
-            parameters=parameters,
             request=request
         )
         return redirect('suite-list.html')
@@ -109,13 +108,12 @@ def edit_suite(request):
         project_id = Project.objects.get(pk=request.POST['project_id'])
         name = request.POST['suite_name']
         variables = request.POST['variables']
-        parameters = request.POST['parameters']
+        # parameters = request.POST['parameters']
         request = request.POST['request']
         Suite.objects.filter(suite_id=sid).update(
             project_id=project_id,
             name=name,
             variables=variables,
-            parameters=parameters,
             request=request
         )
         return redirect('suite-list.html')

@@ -35,7 +35,6 @@
 						<th>测试集名称</th>
 						<th>关联项目名称</th>
                         <th>测试集全局变量</th>
-                        <th>测试集全局参数</th>
                         <th>测试集基础URL</th>
 						<th>操作</th>
 					</tr>
@@ -47,7 +46,6 @@
 						<td>{{ suite.name}}</td>
 						<td>{{ suite.project_id.project_name}}</td>
                         <td>{{ suite.variables }}</td>
-                        <td>{{ suite.parameters }}</td>
                         <td>{{ suite.request }}</td>
                         <td>
                             <a href="edit-suite.html?sid={{ suite.suite_id }}" class="btn btn-warning">
