@@ -1,15 +1,15 @@
 {% extends 'base/base.html' %}
 {% load staticfiles %}
-{% block title %} 添加用例{% endblock %}
+{% block title %} 修改用例{% endblock %}
 {% block content %}
     <link href="{% static 'css/mycss/1.css' %}" rel="stylesheet">
     <section class="content-header">
 		<h1>
-            添加测试用例
+            修改测试用例
         </h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>用例管理</a></li>
-            <li class="active">添加用例</li>
+            <li class="active">修改用例</li>
 		</ol>
 	</section>
 
@@ -183,7 +183,7 @@
                 </button>
             </div>
 
-            <span class="" style="text-align: center;display:block; padding: 20px"><button type="submit" class="btn btn-primary btn-lg " style="width: 200px">提交</button></span>
+            <span class="" style="text-align: center;display:block; padding: 20px"><button type="submit" class="btn btn-primary btn-lg " style="width: 200px">确认修改</button></span>
             {% csrf_token %}
         </form>
     </div>

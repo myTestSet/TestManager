@@ -45,11 +45,15 @@
                 <h6>(全局参数，作用域为整个模块，json格式)</h6>
                 <div class="col-md-2" style="margin-left: 150px;">
                     <label style="font-size: large">key</label>
-                    <input type="text" class="form-control newadd para_input para_key" placeholder="添加key值"/>
+                    <input type="text"
+                           class="form-control newadd para_input para_key"
+                           placeholder="添加key值"/>
                 </div>
                 <div class="col-md-2">
                     <label style="font-size: large">value</label>
-                    <input type="text" placeholder="请输入value值" class="form-control newadd-con para_input para_value"/>
+                    <input type="text"
+                           placeholder="请输入value值"
+                           class="form-control newadd-con para_input para_value"/>
                 </div>
 
                 <div class="col-md-2" style="padding-left: 0">
@@ -94,11 +98,16 @@
     <div class="form-group newadd-div hidden create-w">
         <div class="col-md-2">
             <label style="font-size: large">key</label>
-            <input type="text" class="form-control newadd" name="more_title" placeholder="添加key值" style="width: 126px"/>
+            <input type="text"
+                   class="form-control newadd"
+                   name="more_title"
+                   placeholder="添加key值" style="width: 115%"/>
         </div>
         <div class="col-md-2" style="margin-left: 20px; ">
             <label style="font-size: large">value</label>
-            <input type="text" placeholder="请输入value值" class="form-control newadd-con para_input para_value" style="width: 126px"/>
+            <input type="text" placeholder="请输入value值"
+                   class="form-control newadd-con para_input para_value"
+                   style="width: 115%"/>
         </div>
         <div class="col-md-2" style="padding-left: 0;margin-left: 27px;">
             <label style="font-size: large"></label>
@@ -112,7 +121,6 @@
 
     $(function(){
         $(".para_input").bind('input porpertychange',function(){
-            console.log("e");
             var keyValue = $(".para_key").val();
             var valueValue = $(".para_value").val();
             console.log(keyValue)

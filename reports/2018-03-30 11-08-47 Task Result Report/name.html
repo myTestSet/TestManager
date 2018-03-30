@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Result</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Test Result</h2>
+                <p class='attribute'><strong>Start Time: </strong>2018-03-30 11:08:47</p>
+                <p class='attribute'><strong>Duration: </strong>0.081s</p>
+                <p class='attribute'><strong>Status: </strong>Error: 2</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>2018-03-30 11-08-47 Task Result Report</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <tr class='warning'>
+                                <td class="col-xs-9">liuzunrui-case</td>
+                                <td class="col-xs-3">
+                                    <span class="label label-warning">
+                                        
+                                            Error
+                                        
+                                    </span>
+                                    
+                                        &nbsp<button class="btn btn-default btn-xs">View</button>
+                                    
+                                </td>
+                            </tr>
+                            
+                                <tr style="display:none;">
+                                    <td class="col-xs-9">
+                                        <p>ParamsError</p>
+                                        <p>Failed to extract value from response!
+response: {'body': u'<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /</pre>\n</body>\n</html>\n', 'status_code': 404, 'headers': {'Content-Length': '140', 'Content-Security-Policy': "default-src 'self'", 'X-Content-Type-Options': 'nosniff', 'X-Powered-By': 'Express', 'Vary': 'Accept-Encoding', 'Connection': 'keep-alive', 'Date': 'Fri, 30 Mar 2018 03:08:47 GMT', 'Content-Type': 'text/html; charset=utf-8'}}
+extract field: msg0
+</p>
+                                    </td>
+                                </tr>
+                            
+                        
+                            <tr class='warning'>
+                                <td class="col-xs-9">test</td>
+                                <td class="col-xs-3">
+                                    <span class="label label-warning">
+                                        
+                                            Error
+                                        
+                                    </span>
+                                    
+                                        &nbsp<button class="btn btn-default btn-xs">View</button>
+                                    
+                                </td>
+                            </tr>
+                            
+                                <tr style="display:none;">
+                                    <td class="col-xs-9">
+                                        <p>UnicodeEncodeError</p>
+                                        <p>'ascii' codec can't encode characters in position 0-11: ordinal not in range(128)</p>
+                                    </td>
+                                </tr>
+                            
+                        
+                        <tr>
+                            <td>
+                               Total Test Runned: 2
+                            </td>
+                            <td>
+                                <span>Error: 2</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html>

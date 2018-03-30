@@ -56,8 +56,8 @@ class Case(BaseModel):
     # 测试用例中定义的变量
     variables = models.CharField(max_length=500, blank=True, null=True)
 
-    # 测试用例中定义的参数列表，作用域为当前测试用例，用于实现对当前测试用例进行数据化驱动
-    parameters = models.CharField(max_length=1024, blank=True, null=True)
+    #  测试用例中定义的参数列表，作用域为当前测试用例，用于实现对当前测试用例进行数据化驱动
+    # parameters = models.CharField(max_length=1024, blank=True, null=True)
 
     # HTTP请求的详细内容，包括 url 路径，请求方法，数据,具体可参考
     # http://docs.python-requests.org/en/master/api/#requests.Request

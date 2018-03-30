@@ -14,4 +14,8 @@ urlpatterns = [
     url(r'^suite-list.html$', views.suite_list, name='suite_list'),
     url(r'^edit-suite.html$', views.edit_suite, name='edit_suite'),
     url(r'^delete-suite.html$', views.del_suite, name='del_suite'),
+    url(r'^case-list.html$', views.case_list, name='case_list'),
+    url(r'^edit-case.html$', views.edit_case, name='edit_case'),
+    url(r'^run-test.html$', views.runTest, name='run_test'),
+    url(r'^report-list.html$', views.reports_list, name='report_list'),
 ]
