@@ -1,10 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
 
-</body>
-</html>
+{% block content %}
+
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+            测试用例列表
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>测试用例管理</a></li>
+			<li class="active">测试用例列表</li>
+		</ol>
+	</section>
+
+    <div class="heading">
+{#        <button id="build" type="button" class="btn  btn-success" data-toggle="modal">#}
+{#            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><a href="add-project.html">添加项目</a>#}
+{#        </button>#}
+    <a class="btn btn-success" href="add-case.html">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        添加测试用例
+    </a>
+    </div>
+
+	<!-- Main content -->
+	<section class="content">
+		<div class="box table-responsive no-padding">
+			<table class="table table-bordered table-hover">
+				<tbody>
+					<tr>
+                        <th>
+                            <input name="checkbox" type="checkbox" id="1">
+                        </th>
+						<th>测试用例名称</th>
+						<th>所属模块</th>
+						<th>操作</th>
+					</tr>
+					{% for case in case_lists %}
+					<tr>
+                        <td>
+                            <input name="checkbox" type="checkbox" id="1">
+                        </td>
+						<td>{{ case.name}}</td>
+						<td>{{ case.suite_id.name}}</td>
+                        <td>
+                            <a href="edit-case.html?cid={{ case.case_id }}" class="btn btn-warning">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                修改
+                            </a>
+                            <a href="delete-case.html?cid={{ case.case_id }}" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>删除
+                            </a>
+                        </td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% if products %}
+			{% endif %}
+			<span style="float: right; margin-right: 30px">总数：{{ total }}</span>
+		</div>  <!--end of div.box-->
+	</section>
+
+{% endblock content%}

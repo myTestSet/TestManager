@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			报告列表
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>报告管理</a></li>
+			<li class="active">报告列表</li>
+		</ol>
+	</section>
+
+
+
+	<!-- Main content -->
+	<section class="content">
+		<div class="box table-responsive no-padding">
+			<ul class="list-group">
+                {% for i in lists %}
+                    <li class="list-group-item">
+                        {{ i }}
+                    <button class="btn btn-primary" style="margin-left: 50%">查看</button>
+                    </li>
+                {% endfor %}
+			</ul>
+			<span style="float: right; margin-right: 30px">总数：{{ total }}</span>
+		</div>  <!--end of div.box-->
+	</section>
+
+{% endblock content%}
