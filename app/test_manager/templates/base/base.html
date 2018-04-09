@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试管理系统</title>
+    {% include "base/css.html" %}
+    {% include "base/js.html" %}
+</head>
+<body class="layui-bg-gray bg-gray">
+<div class="wrapper">
+    {% include 'base/top.html' %}
+    <aside class="main-sidebar" style="background-color: #293846; height: 200px">
+        <section class="sidebar">
+            {% include 'base/menu.html' %}
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <section class="content-header">
+          {% block contentHeader %}
+          {% endblock %}
+        </section>
+        <div class="content">
+          {% for message in messages %}
+          <ul class="alert alert-{{message.tags}} dmsg">
+            <p> {{ message }} </p>
+          </ul>
+          {% endfor %}
+
+          {% block content %}
+          {% endblock %}
+        </div>
+    </div>
+    {% include 'base/footer.html' %}
+</div>
+</body>
+</html>
