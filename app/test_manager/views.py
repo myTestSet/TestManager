@@ -76,6 +76,7 @@ def add_suite(request):
         contexts = {'project_lists': project_lists}
         return render(request, 'add-suite.html', contexts)
     elif request.method == 'POST':
+        print request.body
         project_id = Project.objects.get(pk=request.POST['project_id'])  # 外键
         name = request.POST['suite_name']
         variables = request.POST['variables']
