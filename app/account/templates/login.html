@@ -1,0 +1,41 @@
+{% load staticfiles %}
+{% include "base/css.html" %}
+{% include "base/js.html" %}
+<link href="{% static 'css/mycss/register.css' %}" rel="stylesheet">
+<div class="container">
+    <div class="col-md-6 col-md-offset-3">
+        <form method="post" action="" role="form" class="form-horizontal">
+            <div class="form-group has-feedback">
+                <label for="username">邮箱</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <img src="{% static 'img/icon/email.png' %}" style="height: 20px">
+                    </span>
+                    <input id="email" name="email" class="form-control" placeholder="请输入邮箱" maxlength="100" type="text">
+                </div>
+
+                <span style="color:red;display: none;" class="tips"></span>
+                <span style="display: none;" class=" glyphicon glyphicon-remove form-control-feedback"></span>
+                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label for="password">密码</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <img src="{% static 'img/icon/secret.png' %}" style="height: 20px">
+                    </span>
+                    <input id="password" name="password" class="form-control" placeholder="请输入密码" maxlength="20" type="password">
+                </div>
+
+                <span style="color:red;display: none;" class="tips"></span>
+                <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="form-control btn btn-primary" id="submit">立&nbsp;&nbsp;即&nbsp;&nbsp;登&nbsp;&nbsp;录</button>
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
