@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.test_manager',
     'app.account',
+    'app.activity_set',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,15 @@ DATABASES = {
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
         'PORT': '3306',
+    },
+
+    'activity_set': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'htjcdb8',
+        'USER': 'zfpt_kf',
+        'PASSWORD': 'zfpt_kf',
+        'HOST': '192.168.80.131',
+        'PORT': '15210',
     }
 }
 

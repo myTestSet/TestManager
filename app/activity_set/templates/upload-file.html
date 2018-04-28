@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link href="{% static 'css/mycss/1.css' %}" rel="stylesheet">
+    <section class="content-header">
+		<h1>
+            活动配置管理
+        </h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>活动配置管理</a></li>
+            <li class="active">上传配置文件</li>
+		</ol>
+	</section>
+
+    <div style="padding: 50px 50px 10px; ">
+       <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="myfile">
+        <input type="submit">
+        {% csrf_token %}
+    </form>
+    </div>
+{% endblock %}
+
