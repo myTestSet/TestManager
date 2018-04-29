@@ -10,13 +10,14 @@ from django.contrib.auth.decorators import login_required
 
 
 from .models import Project, Suite, Case
+from backend import suite_format_data
 from httprunner.cli import main_ate
 '''
 修改数据库的不加/
 不修改数据的库的加/
 '''
 
-@login_required
+
 def home(request):
     return render(request, 'home.html')
 
@@ -76,12 +77,11 @@ def add_suite(request):
         contexts = {'project_lists': project_lists}
         return render(request, 'add-suite.html', contexts)
     elif request.method == 'POST':
-        print request.body
-        project_id = Project.objects.get(pk=request.POST['project_id'])  # 外键
-        name = request.POST['suite_name']
-        variables = request.POST['variables']
-        # parameters = request.POST['parameters']
-        request = request.POST['request']
+        request_data = suite_format_data(request.body)
+        project_id = Project.objects.get(pk=request_data['project_id'])  # 外键
+        name = request_data['name']
+        variables = request_data['variables']
+        request = request_data['request']
         Suite.objects.create(
             project_id=project_id,
             name=name,
@@ -113,11 +113,11 @@ def edit_suite(request):
         return render(request, 'edit-suite.html', contexts)
     elif request.method == 'POST':
         sid = request.GET.get('sid')
-        project_id = Project.objects.get(pk=request.POST['project_id'])
-        name = request.POST['suite_name']
-        variables = request.POST['variables']
-        # parameters = request.POST['parameters']
-        request = request.POST['request']
+        request_data = suite_format_data(request.body)
+        project_id = Project.objects.get(pk=request_data['project_id'])
+        name = request_data['suite_name']
+        variables = request_data['variables']
+        request = request_data['request']
         Suite.objects.filter(suite_id=sid).update(
             project_id=project_id,
             name=name,
