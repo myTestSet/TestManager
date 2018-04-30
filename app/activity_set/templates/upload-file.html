@@ -2,6 +2,55 @@
 {% load staticfiles %}
 {% block content %}
     <link href="{% static 'css/mycss/1.css' %}" rel="stylesheet">
+       <style rel="stylesheet">
+        /*模态框*/
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 根据浏览器定位 */
+    z-index: 1; /* 放在顶部 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 全宽 */
+    height: 100%; /* 全高 */
+    overflow: auto; /* 允许滚动 */
+    background-color: rgba(0,0,0,0.4); /* 背景色 */
+}
+/*模态框内容*/
+.modal-content {
+    display: flex; /*采用flexbox布局*/
+    flex-direction: column; /*垂直排列*/
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto; /*距顶部15% 水平居中*/
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    animation: topDown 0.4s; /*自定义动画，从模态框内容上到下出现*/
+}
+@keyframes topDown {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+/*模态框头部*/
+.modal-header {
+    display: flex; /*采用flexbox布局*/
+    flex-direction: row; /*水平布局*/
+    align-items: center; /*内容垂直居中*/
+    justify-content: space-between;
+}
+/*关闭X 样式*/
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+       </style>
     <section class="content-header">
 		<h1>
             活动配置管理
@@ -13,11 +62,96 @@
 	</section>
 
     <div style="padding: 50px 50px 10px; ">
-       <form action="" method="post" enctype="multipart/form-data">
+       <form action="upload-file.html" method="post" enctype="multipart/form-data">
         <input type="file" name="myfile">
         <input type="submit">
         {% csrf_token %}
     </form>
     </div>
+
+    <div>
+    <!-- 触发按钮 -->
+        <button id="triggerBtnActivity">创建活动</button>
+    <!-- 模态框 -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="closeBtn" class="close">×</span>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'create_activity' %}" method="post">
+                        <input type="text" placeholder="请输入文件名称" name="filename"/>
+                        <input type="text" placeholder="请输入sheet名称" name="sheetname" />
+                        <button type="submit">提交</button>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+    <!-- 触发按钮 -->
+        <button id="triggerBtnAward">创建活动奖励</button>
+    <!-- 模态框 -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+{#                <div class="modal-header">#}
+{#                    <span id="closeBtn" class="close">×</span>#}
+{#                </div>#}
+                <div class="modal-body">
+                    <form action="{% url 'create_activity' %}" method="post">
+                        <input type="text" placeholder="请输入文件名称" name="filename"/>
+                        <input type="text" placeholder="请输入sheet名称" name="sheetname" />
+                        <button type="submit">提交</button>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function() {
+    /*建立模态框对象*/
+    var modalBox = {};
+    /*获取模态框*/
+    modalBox.modal = document.getElementById("myModal");
+    /*获得trigger按钮*/
+    modalBox.triggerBtnActivity = document.getElementById("triggerBtnActivity");
+    /*获得关闭按钮*/
+    modalBox.closeBtn = document.getElementById("closeBtn");
+    /*模态框显示*/
+    modalBox.show = function() {
+        console.log(this.modal);
+        this.modal.style.display = "block";
+    }
+    /*模态框关闭*/
+    modalBox.close = function() {
+        this.modal.style.display = "none";
+    }
+    /*当用户点击模态框内容之外的区域，模态框也会关闭*/
+    modalBox.outsideClick = function() {
+        var modal = this.modal;
+        window.onclick = function(event) {
+            if(event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+    /*模态框初始化*/
+    modalBox.init = function() {
+        var that = this;
+        this.triggerBtnActivity.onclick = function() {
+            that.show();
+        }
+        this.closeBtn.onclick = function() {
+            that.close();
+        }
+        this.outsideClick();
+    }
+    modalBox.init();
+
+})();
+</script>
 {% endblock %}
 

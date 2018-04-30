@@ -87,7 +87,7 @@ DATABASES = {
     },
 
     'activity_set': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.oracle',
         'NAME': 'htjcdb8',
         'USER': 'zfpt_kf',
         'PASSWORD': 'zfpt_kf',
