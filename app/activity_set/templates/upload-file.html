@@ -73,10 +73,10 @@
     <!-- 触发按钮 -->
         <button id="triggerBtnActivity">创建活动</button>
     <!-- 模态框 -->
-        <div id="myModal" class="modal">
+        <div id="myModalActivity" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span id="closeBtn" class="close">×</span>
+                    <span id="closeBtnActivity" class="close">×</span>
                 </div>
                 <div class="modal-body">
                     <form action="{% url 'create_activity' %}" method="post">
@@ -89,18 +89,62 @@
             </div>
         </div>
     </div>
-
+    <!--创建活动奖励-->
     <div>
     <!-- 触发按钮 -->
         <button id="triggerBtnAward">创建活动奖励</button>
     <!-- 模态框 -->
-        <div id="myModal" class="modal">
+        <div id="myModalAward" class="modal">
             <div class="modal-content">
-{#                <div class="modal-header">#}
-{#                    <span id="closeBtn" class="close">×</span>#}
-{#                </div>#}
+                <div class="modal-header">
+                    <span id="closeBtnAward" class="close">×</span>
+                </div>
                 <div class="modal-body">
-                    <form action="{% url 'create_activity' %}" method="post">
+                    <form action="{% url 'create_activity_award' %}" method="post">
+                        <input type="text" placeholder="请输入文件名称" name="filename"/>
+                        <input type="text" placeholder="请输入sheet名称" name="sheetname" />
+                        <button type="submit">提交</button>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--创建抽奖管理-->
+    <div>
+    <!-- 触发按钮 -->
+        <button id="triggerBtnLottery">创建抽奖管理</button>
+    <!-- 模态框 -->
+        <div id="myModalLottery" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="closeBtnLottery" class="close">×</span>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'create_lottery' %}" method="post">
+                        <input type="text" placeholder="请输入文件名称" name="filename"/>
+                        <input type="text" placeholder="请输入sheet名称" name="sheetname" />
+                        <button type="submit">提交</button>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--创建抽奖奖项-->
+    <div>
+    <!-- 触发按钮 -->
+        <button id="triggerBtnLotteryAward">创建抽奖管理</button>
+    <!-- 模态框 -->
+        <div id="myModalLotteryAward" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="closeBtnLotteryAward" class="close">×</span>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'create_lottery_award' %}" method="post">
                         <input type="text" placeholder="请输入文件名称" name="filename"/>
                         <input type="text" placeholder="请输入sheet名称" name="sheetname" />
                         <button type="submit">提交</button>
@@ -113,24 +157,92 @@
     <script>
     (function() {
     /*建立模态框对象*/
-    var modalBox = {};
+    var modalBoxAcitivity = {};
+    var modalBoxAward = {};
+    var modalBoxLottery = {};
+    var modalBoxLotteryAward = {};
     /*获取模态框*/
-    modalBox.modal = document.getElementById("myModal");
+    modalBoxAcitivity.modal = document.getElementById("myModalActivity");
+    modalBoxAward.modal = document.getElementById("myModalAward");
+    modalBoxLottery.modal = document.getElementById("myModalLottery");
+    modalBoxLotteryAward.modal = document.getElementById("myModalLotteryAward");
     /*获得trigger按钮*/
-    modalBox.triggerBtnActivity = document.getElementById("triggerBtnActivity");
+    modalBoxAcitivity.triggerBtnActivity = document.getElementById("triggerBtnActivity");
+    modalBoxAward.triggerBtnAward = document.getElementById("triggerBtnAward");
+    modalBoxLottery.triggerBtnLottery = document.getElementById("triggerBtnLottery");
+    modalBoxLotteryAward.triggerBtnLotteryAward = document.getElementById("triggerBtnLotteryAward");
     /*获得关闭按钮*/
-    modalBox.closeBtn = document.getElementById("closeBtn");
+    modalBoxAcitivity.closeBtnActivity = document.getElementById("closeBtnActivity");
+    modalBoxAward.closeBtnAward = document.getElementById("closeBtnAward");
+    modalBoxLottery.closeBtnLottery = document.getElementById("closeBtnLottery");
+    modalBoxLotteryAward.closeBtnLotteryAward = document.getElementById("closeBtnLotteryAward");
+
+
     /*模态框显示*/
-    modalBox.show = function() {
+    modalBoxAcitivity.show = function() {
         console.log(this.modal);
         this.modal.style.display = "block";
     }
+
+    /*模态框显示*/
+    modalBoxAward.show = function() {
+        console.log(this.modal);
+        this.modal.style.display = "block";
+    }
+
+    modalBoxLottery.show = function() {
+        console.log(this.modal);
+        this.modal.style.display = "block";
+    }
+
+    modalBoxLotteryAward.show = function() {
+        console.log(this.modal);
+        this.modal.style.display = "block";
+    }
+
     /*模态框关闭*/
-    modalBox.close = function() {
+    modalBoxAcitivity.close = function() {
+        this.modal.style.display = "none";
+    }
+    /*模态框关闭*/
+    modalBoxAward.close = function() {
+        this.modal.style.display = "none";
+    }
+
+    modalBoxLottery.close = function () {
+        this.modal.style.display = "none";
+    }
+
+    modalBoxLotteryAward.close = function () {
         this.modal.style.display = "none";
     }
     /*当用户点击模态框内容之外的区域，模态框也会关闭*/
-    modalBox.outsideClick = function() {
+    modalBoxAcitivity.outsideClick = function() {
+        var modal = this.modal;
+        window.onclick = function(event) {
+            if(event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+    modalBoxAward.outsideClick = function() {
+        var modal = this.modal;
+        window.onclick = function(event) {
+            if(event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+    modalBoxLottery.outsideClick = function() {
+        var modal = this.modal;
+        window.onclick = function(event) {
+            if(event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+    modalBoxLotteryAward.outsideClick = function() {
         var modal = this.modal;
         window.onclick = function(event) {
             if(event.target == modal) {
@@ -139,17 +251,55 @@
         }
     }
     /*模态框初始化*/
-    modalBox.init = function() {
+    modalBoxAcitivity.init = function() {
         var that = this;
         this.triggerBtnActivity.onclick = function() {
             that.show();
         }
-        this.closeBtn.onclick = function() {
+        this.closeBtnActivity.onclick = function() {
             that.close();
         }
         this.outsideClick();
     }
-    modalBox.init();
+
+
+    modalBoxAward.init = function() {
+        var that = this;
+        this.triggerBtnAward.onclick = function() {
+            that.show();
+        }
+        this.closeBtnAward.onclick = function() {
+            that.close();
+        }
+        this.outsideClick();
+    }
+
+    modalBoxLottery.init = function() {
+        var that = this;
+        this.triggerBtnLottery.onclick = function() {
+            that.show();
+        }
+        this.closeBtnLottery.onclick = function() {
+            that.close();
+        }
+        this.outsideClick();
+    }
+
+    modalBoxLotteryAward.init = function() {
+        var that = this;
+        this.triggerBtnLotteryAward.onclick = function() {
+            that.show();
+        }
+        this.closeBtnLotteryAward.onclick = function() {
+            that.close();
+        }
+        this.outsideClick();
+    }
+
+    modalBoxLottery.init();
+    modalBoxAcitivity.init();
+    modalBoxAward.init();
+    modalBoxLotteryAward.init();
 
 })();
 </script>
