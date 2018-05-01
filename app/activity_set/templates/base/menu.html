@@ -94,11 +94,32 @@
             </div>
         </div>
 
+{#        <div class="panel panel-info sidebar-menu">#}
+{#            <div class="panel-heading" role="tab">#}
+{#                <h4 class="panel-title">#}
+{#                <a href="{% url 'upload_file' %}"><span class="fa fa-cog"></span>活动配置管理</a>#}
+{#                </h4>#}
+{#            </div>#}
+{#        </div>#}
         <div class="panel panel-info sidebar-menu">
-            <div class="panel-heading" role="tab">
+            <div class="panel-heading" id="collapseListGroupHeadingCase" data-toggle="collapse" data-target="#collapseListGroupActivity" role="tab">
                 <h4 class="panel-title">
-                <a href="{% url 'upload_file' %}"><span class="fa fa-cog"></span>活动配置管理</a>
+                    <span class="fa fa-adn"></span>
+                    活动配置管理
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-chevron-down right"></span>
                 </h4>
+            </div>
+            <div id="collapseListGroupActivity" class="panel-collapse collapse"
+                 role="tabpanel" aria-labelledby="collapseListGroupProject">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'upload_file' %}">上传配置文件</a>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa fa-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'file_list' %}">文件列表</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
