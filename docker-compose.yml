@@ -1,0 +1,17 @@
+#db:
+#  image: mysql
+#  expose:
+#    - "3306"
+#  volumes:
+#    - ./db:/var/lib/mysql
+#  environment:
+#    - MYSQL_DATABASE=super_manager
+#    - MYSQL_ROOT_PASSWORD=123456
+
+web:
+  build: .
+  command: python .//TestManager/manage.py runserver 0.0.0.0:9001
+  volumes:
+    - .:/code
+  ports:
+    - "9001:9001"
