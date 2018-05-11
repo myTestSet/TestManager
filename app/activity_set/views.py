@@ -10,8 +10,6 @@ from utils.DbUtils.dbutil import dbutil_select, insert_db
 from backend import get_award_code, get_lottery_code, get_prize_code
 from backend import create_lottery_award_tmp
 
-# Create your views here.
-
 
 def upload_file(request):
     '''
@@ -65,7 +63,7 @@ def create_activity(request):
         status = 0
         acticity_desc = ''
         start_time_tmp = datetime.datetime.now()
-        start_time = start_time_tmp.strftime('%Y%m%d%H%M%S%f')[0:14]
+        start_time = (start_time_tmp + datetime.timedelta(minutes=+20)).strftime('%Y%m%d%H%M%S%f')[0:14]
         end_time_tmp = start_time_tmp + datetime.timedelta(days=+30)
         end_time = end_time_tmp.strftime('%Y%m%d%H%M%S%f')[0:14]
         create_time = datetime.datetime.now().strftime('%Y%m%d%H%M%S%f')[0:17]
@@ -119,7 +117,7 @@ def create_activity(request):
         select_sql = "select * from hd_activity a WHERE a.activity_code ='%s'" \
                      % activity_code
         print select_sql
-    return render(request, 'msg: success')
+    return redirect('upload-file.html')
 
 
 def create_activity_award(request):
@@ -184,14 +182,14 @@ def create_activity_award(request):
                            "VALUES ('%s', '%s', '%s', '%s', '%s', '%s'," \
                            " '%s', %d, %d, %d, '%s', '%s', '%s', '%s', '%s', %d, %d, %d, '%s', %d," \
                            " %d, '%s', %d)" % (award_code, award_name, award_type, rule_code, condition_code,
-                                               is_lottery, award_desc,award_count, remainder, per_max_count,
+                                               is_lottery, award_desc, award_count, remainder, per_max_count,
                                                create_time, update_time, create_people, update_people, activity_code,
                                                reg_real_count, amt_minimum, amt_maximum, is_double, double_condition_lm,
                                                award_amount, double_rule_code, lottery_num)
 
         print insert_award_sql
-        insert_db(insert_award_sql)
-    return redirect(request, "alert")
+        # insert_db(insert_award_sql)
+    return redirect('upload-file.html')
 
 
 def create_lottery(request):
@@ -222,12 +220,12 @@ def create_lottery(request):
         update_people = 'S00000000000150'
         probablitity_flag = '1'
         insert_lottery_sql = "insert into hd_lottery VALUES (" \
-                             "'%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (
-                             lottery_code, lottery_name, start_time, end_time, status, activity_code, create_time,
-                             update_time, create_people, update_people, probablitity_flag)
+                             "'%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" %\
+                             (lottery_code, lottery_name, start_time, end_time, status, activity_code, create_time,
+                              update_time, create_people, update_people, probablitity_flag)
         print insert_lottery_sql
-        insert_db(insert_lottery_sql)
-    return redirect(request, "lottery")
+        # insert_db(insert_lottery_sql)
+    return redirect('upload-file.html')
 
 
 def create_lottery_award(request):
@@ -263,4 +261,4 @@ def create_lottery_award(request):
             goods_name, platform_id
         )
 
-    return render(request, "lottery_award")
+    return render('upload-file.html')

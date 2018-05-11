@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 
 import os
 import json
+import simplejson
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.forms import model_to_dict
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
 
 
 from .models import Project, Suite, Case
@@ -325,3 +327,28 @@ def get_report(request):
     '''查看报告'''
     report_name = request.GET['reportName']
     return render(request, report_name+"/name.html")
+
+
+# def add_pro(request):
+#     if request.method == 'GET':
+#         return render(request, 'add-project-demo.html')
+#     elif request.is_ajax():
+#         project_name = request.POST['project_name']
+#         user_name = request.POST['user_name']
+#         Project.objects.create(
+#             project_name=project_name,
+#             user_name=user_name
+#         )
+#         return redirect('project-list.html')
+#
+#
+# def pro_list(request):
+#     projects = Project.objects.all()
+#     project_lists = [project for project in projects]
+#     contexts = {
+#         'total': len(project_lists),
+#         'project_lists': project_lists
+#     }
+#     data = simplejson.dumps(contexts)
+#     print data
+#     return HttpResponse(data, content_type='application/json')

@@ -151,4 +151,4 @@ def create_lottery_award_tmp(test_data, prize_code,
                                       create_people, update_people, version, get_award_level()[i], goods_name,
                                       get_win_probability()[i], platform_id)
         print insert_lottery_award_sql
-        insert_db(insert_lottery_award_sql)
+        # insert_db(insert_lottery_award_sql)
