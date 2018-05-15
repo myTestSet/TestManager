@@ -3,7 +3,6 @@
 # __author__ = 'liuzunrui'
 import xlrd
 
-#print ("%s %s" %(filename, sheetname))
 
 class ExcelUtil:
     def __init__(self, filepath, sheetname):

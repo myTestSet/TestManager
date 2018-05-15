@@ -1,6 +1,16 @@
 Django==1.11
-MySQL-python==1.2.5
 cx-Oracle==6.2.1
 python-dateutil==2.7.2
 pytz==2018.3
 xlrd==1.1.0
+urllib3==1.22
+idna==2.6
+requests==2.18.4
+PyYAML==3.12
+pyunitreport==0.1.4
+MarkupSafe==1.0
+Jinja2==2.10
+colorlog==3.1.2
+certifi==2018.1.18
+chardet==3.0.4
+colorama==0.3.9

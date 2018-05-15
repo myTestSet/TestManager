@@ -26,7 +26,7 @@ def home(request):
 
 def add_project(request):
     if request.method == 'GET':
-        return render(request, 'add-project.html')
+        return render(request, 'test_manager/add-project.html')
     elif request.method == 'POST':
         project_name = request.POST['project_name']
         user_name = request.POST['user_name']
@@ -44,12 +44,12 @@ def project_list(request):
         'total': len(project_lists),
         'project_lists': project_lists
     }
-    return render(request, 'project-list.html', contexts)
+    return render(request, 'test_manager/project-list.html', contexts)
 
 
 def edit_project(request):
     if request.method == 'GET':
-        return render(request, 'edit-project.html')
+        return render(request, 'test_manager/edit-project.html')
     elif request.method == 'POST':
         pid = request.GET.get('pid')  # 获取前端传来的项目 id 值
         project_name = request.POST['project_name']
@@ -77,7 +77,7 @@ def add_suite(request):
         projects = Project.objects.all()
         project_lists = [project for project in projects]
         contexts = {'project_lists': project_lists}
-        return render(request, 'add-suite.html', contexts)
+        return render(request, 'test_manager/add-suite.html', contexts)
     elif request.method == 'POST':
         request_data = suite_format_data(request.body)
         project_id = Project.objects.get(pk=request_data['project_id'])  # 外键
@@ -104,7 +104,7 @@ def suite_list(request):
         'total': len(suite_lists),
         'suite_lists': suite_lists,
     }
-    return render(request, 'suite-list.html', contexts)
+    return render(request, 'test_manager/suite-list.html', contexts)
 
 
 def edit_suite(request):
@@ -112,7 +112,7 @@ def edit_suite(request):
         projects = Project.objects.all()
         project_lists = [project for project in projects]
         contexts = {'project_lists': project_lists}
-        return render(request, 'edit-suite.html', contexts)
+        return render(request, 'test_manager/edit-suite.html', contexts)
     elif request.method == 'POST':
         sid = request.GET.get('sid')
         request_data = suite_format_data(request.body)
@@ -145,7 +145,7 @@ def add_case(request):
         contexts = {
             'suite_lists': suite_lists,
         }
-        return render(request, 'add-case.html', contexts)
+        return render(request, 'test_manager/add-case.html', contexts)
     elif request.method == 'POST':
         name = request.POST['case_name']
         suite_id = Suite.objects.get(pk=request.POST['suite_id'])
@@ -171,7 +171,7 @@ def case_list(request):
         'total': len(case_lists),
         'case_lists': case_lists
     }
-    return render(request, 'case-list.html', contexts)
+    return render(request, 'test_manager/case-list.html', contexts)
 
 
 def edit_case(request):
@@ -181,7 +181,7 @@ def edit_case(request):
         contexts = {
             'suite_lists': suite_lists
         }
-        return render(request, 'edit-case.html', contexts)
+        return render(request, 'test_manager/edit-case.html', contexts)
     elif request.method == 'POST':
         cid = request.GET['cid']
         name = request.POST['case_name']
@@ -320,7 +320,7 @@ def reports_list(request):
         'lists': reports_list,
         # 'list': split_report_list[index],
     }
-    return render(request, 'report-list.html', list_data)
+    return render(request, 'test_manager/report-list.html', list_data)
 
 
 def get_report(request):

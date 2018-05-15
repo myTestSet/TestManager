@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link href="{% static 'css/mycss/1.css' %}" rel="stylesheet">
+    <section class="content-header">
+		<h1>
+            身份证号
+        </h1>
+	</section>
+
+    <div style="padding: 50px 50px 10px; ">
+        <form method="post" action="" role="form" class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-1 text-primary suite-label">
+                    <span class="text-red">*</span>
+                    出生年月日:
+                </label>
+                <div class="col-md-5">
+                    <input placeholder="请输入出生年月日，格式为19880101" name="birthday" class="form-control" required >
+                </div>
+            </div>
+
+            <div class="am-form-group am-cf">
+                <div class="you" style="margin-left: 15%;">
+                    <span class="" style="text-align: center; padding: 20px">
+                        <button type="submit" class="btn btn-primary " style="width: 100px">
+                            生成
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-1 text-primary suite-label">
+                    <span class="text-red">*</span>
+                    身份证号:
+                </label>
+                <div class="col-md-5">
+                    <input placeholder="" name="user_name" class="form-control" value="{{ idno }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-1 text-primary suite-label">
+                    <span class="text-red">*</span>
+                    银行卡号（卡号全是建行）:
+                </label>
+                <div class="col-md-5">
+                    <input placeholder="" name="user_name" class="form-control" value="{{ bankcard_no }}">
+                </div>
+            </div>
+
+            {% csrf_token %}
+        </form>
+        <br>
+
+    </div>
+{% endblock %}
