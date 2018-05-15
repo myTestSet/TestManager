@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app.test_manager',
     'app.account',
     'app.activity_set',
+    'app.test_util',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'super_test_manager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

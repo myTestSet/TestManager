@@ -17,7 +17,7 @@ def register(request):
     '''
 
     if request.method == 'GET':
-        return render(request, 'register.html')
+        return render(request, 'account/register.html')
     elif request.method == 'POST':
         email = request.POST['email']
         username = request.POST['username']
@@ -40,7 +40,7 @@ def login(request):
     :return:
     '''
     if request.method == 'GET':
-        return render(request, 'login.html')
+        return render(request, 'account/login.html')
     elif request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']

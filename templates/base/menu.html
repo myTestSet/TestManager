@@ -1,0 +1,147 @@
+{% load static %}
+{% include 'base/menu-userinfo.html' %}
+<ul class="sidebar-menu">
+    <li class="header">
+    </li>
+    <div class="panel-group table-responsive" role="tablist">
+        <div class="panel panel-info sidebar-menu">
+            <div class="panel-heading" role="tab">
+                <h4 class="panel-title">
+                <a href="{% url 'home' %}"><span class="fa fa-home"></span>首页</a>
+                </h4>
+            </div>
+        </div>
+
+{#        <div class="panel panel-info sidebar-menu">#}
+{#            <div class="panel-heading" id="collapseListGroupHeadingProject" data-toggle="collapse" data-target="#collapseListGroupProject" role="tab">#}
+{#                <h4 class="panel-title">#}
+{#                    <span class="fa fa-magic"></span>#}
+{#                    项目管理#}
+{#                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
+{#                    <span class="glyphicon glyphicon-chevron-down right"></span>#}
+{#                </h4>#}
+{#            </div>#}
+{#            <div id="collapseListGroupProject" class="panel-collapse collapse"#}
+{#                 role="tabpanel" aria-labelledby="collapseListGroupProject">#}
+{#                <ul class="list-group">#}
+{#                    <li class="list-group-item">#}
+{#                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'add_project' %}">添加项目</a>#}
+{#                    </li>#}
+{#                    <li class="list-group-item">#}
+{#                        <span class="fa fa-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'project_list' %}">项目列表</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="panel panel-info sidebar-menu">#}
+{#            <div class="panel-heading" id="collapseListGroupHeadingSuite" data-toggle="collapse" data-target="#collapseListGroupSuite" role="tab">#}
+{#                <h4 class="panel-title">#}
+{#                    <span class="fa fa-adjust"></span>#}
+{#                    模块管理#}
+{#                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
+{#                    <span class="glyphicon glyphicon-chevron-down right"></span>#}
+{#                </h4>#}
+{#            </div>#}
+{#            <div id="collapseListGroupSuite" class="panel-collapse collapse"#}
+{#                 role="tabpanel" aria-labelledby="collapseListGroupProject">#}
+{#                <ul class="list-group">#}
+{#                    <li class="list-group-item">#}
+{#                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'add_suite' %}">添加模块</a>#}
+{#                    </li>#}
+{#                    <li class="list-group-item">#}
+{#                        <span class="fa fa-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'suite_list' %}">模块列表</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{##}
+{#        <div class="panel panel-info sidebar-menu">#}
+{#            <div class="panel-heading" id="collapseListGroupHeadingCase" data-toggle="collapse" data-target="#collapseListGroupCase" role="tab">#}
+{#                <h4 class="panel-title">#}
+{#                    <span class="fa fa-adn"></span>#}
+{#                    测试用例管理#}
+{#                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
+{#                    <span class="glyphicon glyphicon-chevron-down right"></span>#}
+{#                </h4>#}
+{#            </div>#}
+{#            <div id="collapseListGroupCase" class="panel-collapse collapse"#}
+{#                 role="tabpanel" aria-labelledby="collapseListGroupProject">#}
+{#                <ul class="list-group">#}
+{#                    <li class="list-group-item">#}
+{#                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'add_case' %}">添加测试case</a>#}
+{#                    </li>#}
+{#                    <li class="list-group-item">#}
+{#                        <span class="fa fa-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'case_list' %}">测试case列表</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="panel panel-info sidebar-menu">#}
+{#            <div class="panel-heading" role="tab">#}
+{#                <h4 class="panel-title">#}
+{#                <a href="{% url 'report_list' %}"><span class="fa fa-dashboard"></span>报告管理</a>#}
+{#                </h4>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="panel panel-info sidebar-menu">#}
+{#            <div class="panel-heading" role="tab">#}
+{#                <h4 class="panel-title">#}
+{#                <a href="{% url 'home' %}"><span class="fa fa-dashboard"></span>性能测试</a>#}
+{#                </h4>#}
+{#            </div>#}
+{#        </div>#}
+        <!--活动配置-->
+        <div class="panel panel-info sidebar-menu">
+            <div class="panel-heading" id="collapseListGroupHeadingActivity" data-toggle="collapse" data-target="#collapseListGroupActivity" role="tab">
+                <h4 class="panel-title">
+                    <span class="fa fa-adjust"></span>
+                    活动配置
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-chevron-down right"></span>
+                </h4>
+            </div>
+            <div id="collapseListGroupActivity" class="panel-collapse collapse"
+                 role="tabpanel" aria-labelledby="collapseListGroupProject">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'upload_file' %}">上传配置文件</a>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fa fa-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'file_list' %}">文件列表</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--一些小工具，生成身份证号-->
+        <div class="panel panel-info sidebar-menu">
+            <div class="panel-heading" id="collapseListGroupHeadingUtil" data-toggle="collapse" data-target="#collapseListGroupUtil" role="tab">
+                <h4 class="panel-title">
+                    <span class="fa fa-adjust"></span>
+                    小工具
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-chevron-down right"></span>
+                </h4>
+            </div>
+            <div id="collapseListGroupUtil" class="panel-collapse collapse"
+                 role="tabpanel" aria-labelledby="collapseListGroupProject">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="fa fa-plus-square"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'create_id' %}">身份证号大全</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <script>
+        $(function(){
+            $(".panel-heading").click(function(e){
+                /*切换折叠指示图标*/
+                $(this).find("span").toggleClass("glyphicon-chevron-down");
+                $(this).find("span").toggleClass("glyphicon-chevron-up");
+            });
+        });
+        </script>
+</ul>

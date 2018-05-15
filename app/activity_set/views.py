@@ -18,7 +18,7 @@ def upload_file(request):
     :return:
     '''
     if request.method == 'GET':
-        return render(request, 'upload-file.html')
+        return render(request, 'activity_set/upload-file.html')
     elif request.method == 'POST':
         myFile = request.FILES.get('myfile')
         print myFile
@@ -41,7 +41,7 @@ def file_list(request):
         'total': len(file_lists),
         'lists': file_lists,
     }
-    return render(request, 'file-list.html', list_data)
+    return render(request, 'activity_set/file-list.html', list_data)
 
 
 def create_activity(request):
