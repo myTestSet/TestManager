@@ -3,7 +3,7 @@ cx-Oracle==6.2.1
 python-dateutil==2.7.2
 pytz==2018.3
 xlrd==1.1.0
-urllib3==1.22
+urllib3==1.26.5
 idna==2.6
 requests==2.18.4
 PyYAML==3.12
